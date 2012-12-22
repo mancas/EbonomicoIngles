@@ -1,93 +1,135 @@
 <?php
 include_once ('GestionDB.php');
 include_once ('Util.php');
+include_once ('UserDataInfo.php');
 
 session_start();
 
 $name = $_REQUEST['_name'];
 $link = $_REQUEST['_link'];
 $file_errors = $_FILES['_file']['error'];
+$tipo_archivo = $_FILES["_file"]["type"];
+$tamano_archivo = $_FILES["_file"]["size"];
+$nombre_temp = $_FILES["_file"]["tmp_name"];
+$banner_name = $_REQUEST['_name'];
+
+$data = array('_name' => $name, '_link' => $link);
 
 /**
  * CONTROL ERRORES
  */
 
-$msg_name = "";
-$msg_link = "";
-$msg_file = "";
-$clases = "";
-$hide = true;
-$error = "";
-
 $util = new Util();
 
-$fieldsCheck = $util -> checkUpload(array('_name' => $name, '_link' => $link));
+$util -> checkUpload($data);
 
-if (!$fieldsCheck) {
-    var_dump("hi");
-    $msg_name = $GLOBALS['errors']['_name'];
-    $msg_link = $GLOBALS['errors']['_link'];
-}
-var_dump($GLOBALS['errors']['_link']);
+$fieldsCheck = $util -> getErrors();
+
+$dataInfo = null;
 
 if (isset($file_errors) && $file_errors != 0) {
-    echo "file_error    ";
-    $clases = 'alert alert-error action-error action';
-    $hide = false;
+    $dataInfo = UserDataInfo::getInstance();
+    $dataInfo -> setIsHide(false);
+
+    $dataInfo -> setClasses(array('alert', 'alert-error', 'action-error', 'action'));
+    $dataInfo -> setType('Error');
 
     switch ($file_errors) {
         case 1 :
-            $error = "<strong>Error</strong> El archivo seleccionado excede los limites de subida establecidos.";
+            $dataInfo -> setMessage("El archivo seleccionado excede los limites de subida establecidos.");
             break;
         case 2 :
-            $error = "<strong>Error</strong> El archivo seleccionado excede los limites de subida establecidos.";
+            $dataInfo -> setMessage("El archivo seleccionado excede los limites de subida establecidos.");
             break;
         case 3 :
-            $error = "<strong>Error</strong> Fallo al cargar el fichero. Reintentelo de nuevo.";
+            $dataInfo -> setMessage("Fallo al cargar el fichero. Reintentelo de nuevo.");
             break;
         case 4 :
-            $clases = "";
-            $hide = true;
-            $msg_file = "<strong>Error</strong> Este campo no puede ser vacio";
+            $dataInfo -> setMessage("Por favor, seleccione un archivo para cargarlo en el servidor.");
             break;
         case 6 :
-            $error = "<strong>Error</strong> Fallo en la carpeta temporal. Consulte al administrador del sitio web.";
+            $dataInfo -> setMessage("Fallo en la carpeta temporal. Consulte al administrador del sitio web.");
             break;
         case 7 :
-            $error = "<strong>Error</strong> Fallo al escribir el archivo. Consulte al administrador del sitio web.";
+            $dataInfo -> setMessage("Fallo al escribir el archivo. Consulte al administrador del sitio web.");
             break;
+    }
+
+} else {
+
+    $isGif = $util -> isGif($tipo_archivo);
+    $size = $util -> checkSize($tamano_archivo);
+
+    if (!$isGif || !$size) {
+        $dataInfo = UserDataInfo::getInstance();
+        $dataInfo -> setIsHide(false);
+
+        $dataInfo -> setClasses(array('alert', 'alert-error', 'action-error', 'action'));
+        $dataInfo -> setType('Error');
+        $dataInfo -> setMessage("El archivo seleccionado no es un gif o supera los límites de peso establecidos.");
     }
 }
 
-if (empty($error) && empty($msg_name) && empty($msg_file) && empty($msg_link)) {
+if (!($dataInfo instanceof UserDataInfo) && empty($fieldsCheck)) {
 
     $nombre_archivo = $_FILES["_file"]["name"];
-    $tipo_archivo = $_FILES["_file"]["type"];
-    $tamano_archivo = $_FILES["_file"]["size"];
-    $nombre_temp = $_FILES["_file"]["tmp_name"];
-    $banner_name = $_REQUEST['_name'];
 
-    $isGif = $util -> isGif($tipo_archivo);
+    $path = $util -> getPath();
+    $file_path = $path . basename($nombre_archivo);
+    $completePath = $_SERVER['DOCUMENT_ROOT'] . $file_path;
+	$util -> setPath($completePath);
+    $res = $util -> moveUploadFile($nombre_temp);
 
-    $size = $util -> checkSize($tamano_archivo, 10000);
+    if ($res) {
 
-    if (!$isGif || !$size) {
-        $_SESSION['clases'] = 'alert alert-error action-error action';
-        $_SESSION['isHide'] = false;
-        $_SESSION['error'] = '<strong>Error:</strong> El archivo sobrepasa el peso soportado o bien no es un archivo <b>.gif</b>';
-        header("Location:../cpanel-add-banner.php");
+        $dataInfo = UserDataInfo::getInstance();
+        $dataInfo -> setIsHide(false);
+
+        $url = $util -> sanitizeUrl($link);
+        $gestionDB = new GestionDB();
+
+		$date = new DateTime('now');
+
+        $values = array('name' => $name, 'path' => $file_path, 'link' => $url, 'date' => $date->format('Y-m-d'));
+
+        $operation = $gestionDB -> createBanner($values);
+
+        if ($operation) {
+            $dataInfo -> setClasses(array('alert', 'alert-info', 'action-info', 'action'));
+            $dataInfo -> setType('Info');
+            $dataInfo -> setMessage("Se ha creado correctamete el nuevo banner. Puede activarlo en esta misma página. No olvide que en el caso de activar más de cuatro banners, tendrán preferencia los más antiguos.");
+
+            $_SESSION['UserInfo'] = $dataInfo;
+			$_SESSION['dataUpload'] = null;
+            header("Location:../banner/banner-view.php");
+        } else {
+        	$util->deleteFile();
+            $dataInfo -> setClasses(array('alert', 'alert-error', 'action-error', 'action'));
+            $dataInfo -> setType('Error');
+            $dataInfo -> setMessage("Ocurrió un error al añadir el nuevo banner. Intentelo de nuevo. Si el problema persiste contacte con el administrador del sitio web.");
+
+            $_SESSION['UserInfo'] = $dataInfo;
+            $_SESSION['dataUpload'] = $data;
+            header("Location:../banner/banner-add.php");
+        }
+
     } else {
-        $path = $util->getPath();
-        $completePath = $_SERVER['DOCUMENT_ROOT'] . $path . basename($nombre_archivo);
-        $res = $util -> moveUploadFile($nombre_temp, $path);
+        $dataInfo = UserDataInfo::getInstance();
+        $dataInfo -> setIsHide(false);
+
+        $dataInfo -> setClasses(array('alert', 'alert-error', 'action-error', 'action'));
+        $dataInfo -> setType('Oops');
+        $dataInfo -> setMessage("Ocurrió un error mientras se subía el archivo. Intentelo de nuevo. Si el problema persiste contacte con el administrador del sitio web.");
+
+        $_SESSION['UserInfo'] = $dataInfo;
+        $_SESSION['dataUpload'] = $data;
+        header("Location:../banner/banner-add.php");
     }
+
 } else {
-    $_SESSION['isHide'] = $hide;
-    $_SESSION['error'] = $error;
-    $_SESSION['msg']['_name'] = $msg_name;
-    $_SESSION['msg']['_link'] = $msg_link;
-    $_SESSION['msg']['_file'] = $msg_file;
-    $_SESSION['clases'] = $clases;
-    //header("Location:../cpanel-add-banner.php");
+    $_SESSION['fieldsError'] = $fieldsCheck;
+    $_SESSION['UserInfo'] = $dataInfo;
+    $_SESSION['dataUpload'] = $data;
+    header("Location:../banner/banner-add.php");
 }
 ?>

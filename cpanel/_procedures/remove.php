@@ -1,5 +1,4 @@
 <?php
-
 include_once ('GestionDB.php');
 include_once ('Util.php');
 
@@ -12,26 +11,22 @@ $method = 'remove' . ucfirst($item);
 if ($item == 'banner') {
     $result = $gestionDB -> $method($id);
 
+    $file_path = '';
     foreach ($result['path'] as $path) {
-        $file_path = '../../_uploads/' . $path['path'];
+        $file_path = $path['path'];
     }
 
-    if ($result['OK']) {
+    if ($result['OK'] && !empty($file_path)) {
 
         $util = new Util();
+        $util -> setPath($_SERVER['DOCUMENT_ROOT'] . $file_path);
+        $delete_file = $util -> deleteFile();
 
-        $delete_file = $util -> deleteFile($file_path);
-
-        if (!$delete_file['exists']) {
+        if (!$delete_file) {
             echo "<strong>Aviso:</strong> No se encuentra el archivo asociado al Banner con <b>Identificador</b> $id. Pongase en contacto con el administrador del sitio web.";
         } else {
-            if (!$delete_file['delete']) {
-                echo "<strong>Aviso:</strong> Se ha producido un error al intentar eliminar el archivo asociado al Banner con <b>Identificador</b> $id. Reintente la operación, y si el error persiste contacte con el administrador del sitio web";
-            } else {
-                echo "<strong>Info:</strong> Se ha eliminado correctamente el Banner con <b>Identificador</b> $id.";
-            }
+            echo "<strong>Info:</strong> Se ha eliminado correctamente el Banner con <b>Identificador</b> $id.";
         }
-
     } else {
         echo "<strong>Aviso:</strong> Se ha producido un error durante la eliminación del Banner con <b>Identificador</b> $id. Si el problema persiste pongase en contacto con el administrador del sitio web.";
     }

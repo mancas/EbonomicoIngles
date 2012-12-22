@@ -16,11 +16,13 @@ if (!isset($user) || !($user instanceof UserLogin)) {
     $user->setUser($name);
     $user->setPassword($password);
     
+	$_SESSION['login'] = $user;
+	
     $result = $user->getUserCredentials();
     
     if ($result->rowCount() == 1) {
         $_SESSION['elogin'] = null;
-        header('Location:../welcome.php');
+        header('Location:../banner/banner-view.php');
     } else {
         $_SESSION['elogin'] = true;
         header('Location:../index.php');

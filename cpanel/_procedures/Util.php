@@ -3,33 +3,70 @@
 global $errors;
 
 class Util {
-    
-    protected $path = "/aptana/ebonomicoingles/_uploads/";
 
-    public function deleteFile($path)
+    protected $path;
+    protected $errors;
+    protected $maxSize;
+
+    public function __construct()
     {
-        $result = array();
+        $this -> errors = array();
+        $this -> path = "/aptana/ebonomicoingles/_uploads/";
+        $this -> maxSize = 1000000;
+    }
 
-        if (file_exists($path)) {
-            $result['exists'] = true;
+    public function getErrors()
+    {
+        return $this -> errors;
+    }
 
-            if (unlink($path)) {
-                $result['delete'] = true;
+    public function getPath()
+    {
+        return $this -> path;
+    }
+
+    public function getMaxSize()
+    {
+        return $this -> maxSize;
+    }
+
+    public function setErrors($errors)
+    {
+        $this -> errors = $errors;
+    }
+
+    public function setPath($path)
+    {
+        $this -> path = $path;
+    }
+
+    public function setMaxSize($maxSize)
+    {
+        $this -> maxSize = $maxSize;
+    }
+
+    public function deleteFile()
+    {
+        $result = true;
+
+        if (file_exists($this -> path)) {
+            if (unlink($this -> path)) {
+                $result = true;
             } else {
-                $result['delete'] = false;
+                $result = false;
             }
         } else {
-            $result['exists'] = false;
+            $result = false;
         }
 
         return $result;
     }
 
-    public function moveUploadFile($file, $path)
+    public function moveUploadFile($file)
     {
         $result = false;
 
-        if (move_uploaded_file($file, $path)) {
+        if (move_uploaded_file($file, $this -> path)) {
             $result = true;
         } else {
             $result = false;
@@ -41,7 +78,7 @@ class Util {
     public function isGif($type)
     {
         $result = false;
-        if (strpos($type, 'gif')) {
+        if (strpos($type, 'gif') !== false) {
             $result = true;
         }
 
@@ -51,7 +88,7 @@ class Util {
     public function isJpg($type)
     {
         $result = false;
-        if (strpos($type, 'jpg') || strpos($type, 'jpeg')) {
+        if (strpos($type, 'jpg') !== false || strpos($type, 'jpeg') !== false) {
             $result = true;
         }
 
@@ -61,18 +98,18 @@ class Util {
     public function isPng($type)
     {
         $result = false;
-        if (strpos($type, 'png')) {
+        if (strpos($type, 'png') !== false) {
             $result = true;
         }
 
         return $result;
     }
 
-    public function checkSize($fileSize, $maxSize)
+    public function checkSize($fileSize)
     {
         $result = true;
 
-        if ($fileSize > $maxSize) {
+        if ($fileSize > $this -> maxSize) {
             $result = false;
         }
 
@@ -81,29 +118,28 @@ class Util {
 
     public function checkUpload($options)
     {
-        $result = true;
+        $errors = $this -> getErrors();
 
         foreach ($options as $key => $value) {
-            $result = $result && $this->isNotEmptyField($key, $value);
+            if (empty($value) || !isset($value)) {
+                $errors[$key] = 'Este campo no puede estar vacio';
+            }
         }
-        
-        return $result;
+
+        $this -> setErrors($errors);
     }
 
-    public function isNotEmptyField($key, $value)
+    public function sanitizeUrl($url)
     {
-        $result = true;
-        if (empty($value) || !isset($value)) {
-            $GLOBALS['errors'][$key] = "<strong>Error:</strong> Este campo no puede estar vacio";
-            $result = false;
+        if (strpos($url, 'http://') === false) {
+            $result = 'http://' . $url;
+        } else {
+            $result = $url;
         }
-        
+
         return $result;
+
     }
-    
-    public function getPath()
-    {
-        return $this->path;
-    }
+
 }
 ?>

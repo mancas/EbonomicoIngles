@@ -3,8 +3,6 @@ require_once ('../_procedures/UserDataInfo.php');
 
 session_start();
 
-$id = $_REQUEST['id'];
-
 $dataInfo = $_SESSION['UserInfo'];
 
 if(!isset($dataInfo) || !$dataInfo instanceof UserDataInfo){

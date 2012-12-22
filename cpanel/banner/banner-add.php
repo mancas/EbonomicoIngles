@@ -9,14 +9,21 @@ if(!isset($dataInfo) || !$dataInfo instanceof UserDataInfo){
     $dataInfo = UserDataInfo::getInstance();
     $_SESSION['UserInfo'] = $dataInfo;
 }
-$nameError = $_SESSION['msg']['_name'];
-$linkError = $_SESSION['msg']['_link'];
-$fileError = $_SESSION['msg']['_file'];
 
-if (!isset($classes) && !isset($isHide) && !isset($message) && !isset($nameError) && !isset($fileError) && !isset($linkError)) {
-    $nameError = "";
-    $fileError = "";
-    $linkError = "";
+$fieldErrors = $_SESSION['fieldsError'];
+
+if (empty($fieldErrors)) {
+	$fieldErrors['_name'] = '';
+	$fieldErrors['_link'] = '';
+	$_SESSION['fieldsError'] = $fieldErrors;
+}
+
+$data = $_SESSION['dataUpload'];
+
+if (!isset($data)) {
+	$data['_name'] = '';
+	$data['_link'] = '';
+	$_SESSION['dataUpload'] = $data;
 }
 
 ?>
@@ -58,17 +65,17 @@ if (!isset($classes) && !isset($isHide) && !isset($message) && !isset($nameError
                     <tr>
                         <td><label for="item_name">Nombre del banner:</label></td>
                         <td>
-                        <input id="item_name" type="text" value="" name="_name" maxlength="160" />
+                        <input id="item_name" type="text" value="<?php echo $data['_name']; ?>" name="_name" maxlength="160" />
                         <a class="info" href="#"><i class="icon-info-sign"></i> <span class="hide note text-warning alert"><strong>Aviso: </strong> La longitud máxima del nombre para el banner es de 160 caracteres</span> </a></td>
-                        <td id="e_name" class="text-error"><?php echo $nameError; ?></td>
+                        <td id="e_name" class="text-error"><?php echo $fieldErrors['_name']; ?></td>
                     </tr>
                     
                     <tr>
                         <td><label for="item_link">Link:</label></td>
                         <td>
-                        <input id="item_link" type="text" value="" name="_link" />
+                        <input id="item_link" type="text" value="<?php echo $data['_link']; ?>" name="_link" />
                         </td>
-                        <td id="e_link" class="text-error"><?php echo $linkError; ?></td>
+                        <td id="e_link" class="text-error"><?php echo $fieldErrors['_link']; ?></td>
                     </tr>
 
                     <tr>
@@ -77,7 +84,7 @@ if (!isset($classes) && !isset($isHide) && !isset($message) && !isset($nameError
                         <input type="hidden" name="MAX_FILE_SIZE" value="1000000" />
                         <input id="item_file" type="file" name="_file" />
                         <a class="info" href="#"><i class="icon-info-sign"></i> <span class="hide note text-warning alert"><strong>Aviso: </strong> El tamaño del archivo no debe ser superior a 1MB y la extensión debe ser <b>.gif</b></span> </a></td>
-                        <td id="e_file" class="text-error"><?php echo $fileError; ?></td>
+                        <td id="e_file" class="text-error"></td>
                     </tr>
                     <tr>
                         <td colspan="3">

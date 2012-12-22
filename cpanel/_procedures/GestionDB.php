@@ -76,6 +76,28 @@ class GestionDB {
 
         return $result;
     }
+	
+	public function createBanner($values)
+	{
+		$instance = DataBaseConnection::getInstance();
+        $connection = $instance -> createConnection();
+        
+        $name = $values['name'];
+        $link = $values['link'];
+		$path = $values['path'];
+		$date = $values['date'];
+		
+        try {
+            $SQL = "INSERT INTO `englishbeprepared`.`banner` (`name`, `path`, `link`, `date`) VALUES ('$name', '$path', '$link', '$date')";
+            $result = $connection -> exec($SQL);
+        } catch(PDOException $e) {
+            $instance -> closeConnection();
+            return false;
+        }
+        $instance -> closeConnection();
+
+        return $result;
+	}
 
     /**
      * USUARIOS

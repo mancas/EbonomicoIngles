@@ -3,30 +3,20 @@ require_once ('_procedures/UserLogin.php');
 
 session_start();
 
-/**
-$name = $_SESSION['login']['_name'];
-$password = $_SESSION['login']['_password'];
-
-if (!isset($name) && !isset($password)) {
-    $name = "";
-    $password = "";
-    $_SESSION['login']['_name'] = $name;
-    $_SESSION['login']['_password'] = $password;
-}**/
 $user = $_SESSION['login'];
 $eLogin = $_SESSION['elogin'];
 
-if ($user instanceof UserLogin) {
-    $name = $user->getUser();
-} else {
-    $name = '';
+if (!isset($user) || !($user instanceof UserLogin)) {
+	$name = '';
     $user = UserLogin::getInstance();
-    $eLogin = false;
-    $_SESSION['elogin'] = $eLogin;
-    $_SESSION['login'] = $user; 
+	$_SESSION['login'] = $user;
+} else {
+	$name = $user->getUser();
 }
-
-
+if (!isset($eLogin)) {
+   $eLogin = false;
+   $_SESSION['elogin'] = $eLogin;
+}
 ?>
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
@@ -69,4 +59,3 @@ if ($user instanceof UserLogin) {
         
     </body>
 </html>
-
