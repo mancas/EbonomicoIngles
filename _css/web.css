@@ -1,0 +1,62 @@
+.content-right{
+	width: 680px;
+	min-height: 200px;
+	overflow: hidden;
+	margin: 20px 0px 20px 0px;
+	float: right;
+	color: #504F4F;
+}
+
+.content-left{
+	width: 248px;
+	min-height: 200px;
+	overflow: hidden;
+	margin: 20px auto 20px 0px;
+	float: left;
+}
+
+.container{
+	margin: 0 auto;
+    min-height: 200px;
+    overflow: hidden;
+    width: 960px;
+}
+
+/* IMAGENES DENTRO DEL CONTENT RIGHT */
+
+.content-left img{
+	width: 240px;
+	margin-top: 25px;
+	border: solid 4px #FFFFFF;
+}
+
+h2{
+	font-size: 16pt;
+	color: #504F4F;
+	margin: 20px auto 0px auto;
+}
+
+.blue{
+	color: #265CB3;
+}
+
+.bblue{
+	color: #265CB3;
+	font-weight: bold;
+}
+
+.iblue{
+	color: #265CB3;
+	font-style: italic;
+}
+
+ul.requirements{
+	color: #504F4F;
+	font-size: 10pt;
+	list-style: square inside none;
+	margin-left: 50px;
+}
+
+ul.requirements li{
+	margin: 10px auto;
+}

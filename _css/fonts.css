@@ -1,0 +1,13 @@
+@font-face {
+  font-family: 'Sofadi One';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Sofadi One'), local('SofadiOne-Regular'), url("../_fonts/T28dLve-Ycdi1yHVhvAlyRsxEYwM7FgeyaSgU71cLG0.woff") format('woff');
+}
+
+@font-face {
+  font-family: 'Nixie One';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Nixie One'), local('NixieOne-Regular'), url("../_fonts/gQ0PT3rPU_Et2ExNz-ahmj8E0i7KZn-EPnyo3HZu7kw.woff") format('woff');
+}

@@ -1,0 +1,88 @@
+.capital{
+	margin-top: 0px !important;
+}
+
+#gMap{
+	width:300px;
+	height: 240px;
+	overflow: hidden;
+	margin: auto;
+	background-color: #F1F1F1;
+}
+
+span.field{
+	font-weight: bold;
+}
+
+
+/** FORM STYLE */
+	
+#contact label{
+	width: 75px;
+	display: block;
+	float: left;
+	text-align: left;
+	font-weight: bold;
+	margin-right: 8px;
+	color: #265CB3;
+}
+
+#contact span{
+	display: block;
+	float: left;
+}
+
+#contact span.warning{
+	color: #ff0000;
+	padding-left: 8px;
+	width: 258px;
+}
+
+#contact p{
+	margin: 25px 0px !important;
+}
+
+#contact p:after{
+	clear: both;
+    content: " ";
+    display: block;
+    visibility: hidden;
+}
+
+textarea{
+	resize: none;
+	font-family: Arial, Helvetica, sans-serif;
+	width: 328px;
+	font-size: 10pt;
+}
+
+#contact input[type="text"]{
+	max-width: 300px;
+	min-width: 200px;
+	height: 20px;
+	max-height: 22px;
+}
+
+#contact span.button{
+	width: 414px;
+	text-align: right;
+}
+/*
+input[type="submit"]{
+	font-size: 13px;
+	height: 32px;
+	border: solid 1px #504F4F;
+	background-color: #003675;
+	color: white !important;
+	min-width: 50px !important;
+	max-width: 140px !important;
+	height: 28px;
+	cursor: pointer;
+	padding: 4px;
+	margin: 10px;
+	line-height: 10px;
+}
+
+input.button:hover{
+	background-color: #C69C6D;
+}*/

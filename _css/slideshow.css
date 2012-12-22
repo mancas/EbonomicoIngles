@@ -1,0 +1,26 @@
+#slideshow{
+	position: absolute;
+	width: 996px;
+	height: 225px;
+	background-color: #265CB3;
+	right: 0px;
+}
+
+#slideshow img{
+	position: absolute;
+	top: 0;
+	left: 0;
+	z-index: 8;
+	opacity: 0.0;
+	width: 996px;
+	height: 240px;
+}
+
+#slideshow img.active{
+	z-index: 10;
+	opacity: 1.0;
+}
+
+#slideshow img.last-active{
+	z-index: 9;
+}
