@@ -5,7 +5,6 @@
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 		<title>English Be Prepared</title>
 		
-		
 		<link rel="icon" href="_images/favicon_english_be_prepared.png" type="image/png">
 
 		<link type="text/css" rel="stylesheet" href="_css/style.css" />
