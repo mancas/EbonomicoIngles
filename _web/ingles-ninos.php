@@ -26,26 +26,26 @@
 				
 				<p>
 					Trabajar con niños enseñándoles un idioma es una de las tareas más gratificantes que hay para un docente. 
-					Los niños son como pequeñas esponjas que absorben a través de <span class="blue">juegos, canciones, dibujos animados, cuentos</span>, 
+					Los niños son como pequeñas esponjas que absorben a través de <i class="blue">juegos, canciones, dibujos animados, cuentos</i>, 
 					todo lo que se les propone enseñar en este nuevo idioma para ellos y que tan útil les va a ser en un futuro. 
 				</p>
 				<p>
-					Debemos aprovechar la habilidad que tienen para imitar la entonación y la pronunciación, para que en un <span class="blue">futuro</span> 
+					Debemos aprovechar la habilidad que tienen para imitar la entonación y la pronunciación, para que en un <i class="blue">futuro</i> 
 					dominen la lengua inglesa.
 				</p>
 				<p>
-					Nuestro objetivo es que los niños <span class="blue">se familiaricen con el idioma desde el primer día y de forma natural</span>, 
+					Nuestro objetivo es que los niños <i class="blue">se familiaricen con el idioma desde el primer día y de forma natural</i>, 
 					con una participación activa realizando actividades de diversa índole, introduciéndolos desde pequeños en la 
 					cultura de los países que hablan la lengua inglesa.
 				</p>
 				<p>
 					Queremos hacer un llamamiento a esos padres que están pensando en que sus hijos aprendan Inglés y que a 
-					veces piensan que tienen toda una vida para aprenderlo; está comprobado que cuanto <span class="blue">más joven</span> se empiece a 
-					estudiar un idioma, <span class="blue">mejores son los resultados</span>. Sus hijos lo toman como un juego y su capacidad para aprender 
+					veces piensan que tienen toda una vida para aprenderlo; está comprobado que cuanto <i class="blue">más joven</i> se empiece a 
+					estudiar un idioma, <i class="blue">mejores son los resultados</i>. Sus hijos lo toman como un juego y su capacidad para aprender 
 					y para recordar lo que están aprendiendo es inmensa.
 				</p>
 				<p>
-					Por eso desde <span class="bblue">English Be Prepared</span> hacemos que sus hijos, desde  pequeños, <span class="blue">aprendan Inglés jugando</span>.
+					Por eso desde <i class="bblue">English Be Prepared</i> hacemos que sus hijos, desde  pequeños, <i class="blue">aprendan Inglés jugando</i>.
 				</p>
 				</span>
 			<span class="content-left"> <img alt="Kids" src="../_images/kids2.jpg" /> </span>
@@ -59,4 +59,3 @@
 	</body>
 
 </html>
-

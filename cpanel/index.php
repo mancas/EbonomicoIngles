@@ -59,3 +59,6 @@ if (!isset($eLogin)) {
         
     </body>
 </html>
+<?php
+$_SESSION['elogin'] = null;
+?>

@@ -1,0 +1,148 @@
+#index-content{
+	width: 640px;
+	min-height: 400px;
+	margin: 0px auto;
+	overflow: hidden;
+	float: left;
+}
+
+#banner-left{
+	float: left;
+	width: 160px;
+	min-height: 560px;
+	border: none;
+	margin-top: 36px;
+	overflow: hidden;
+}
+
+ul.banner {
+    margin: 0px auto;
+    padding: 0px;
+    list-style-type: none;
+    list-style-position: outside;
+    position: relative;
+}
+
+ul.banner > li {
+    float: none;
+    display: block;
+    margin-top: 10px;
+    height: 275px;
+    width: 160px;
+    background-color: #DDDDDD;
+}
+
+ul.banner > li:first-child {
+    margin-top: 0px !important;
+}
+
+#banner-right{
+	float: right;
+	width: 160px;
+	min-height: 560px;
+	border: none;
+	margin-top: 36px;
+	overflow: hidden;
+}
+
+/**
+ * 	DESCRIPTIONS
+ */
+
+.info-box {
+	width: 245px;
+	min-height: 30px;
+	margin: 20px 0px 20px 46px;
+	border: solid 2px #C69C6D;
+	float: left;
+	background-color: #FFFFFF;
+	position: relative;
+	cursor: pointer;
+}
+
+.info-box span {
+	width: 170px;
+	display: block;
+	overflow: hidden;
+	padding: 15px;
+	font-size: 9pt;
+	line-height: 20px;
+	text-align: justify;
+}
+
+.info-box .box-title {
+	width: 245px;
+	height: 30px;
+	overflow: hidden;
+	color: #FFFFFF;
+	background-color: #265CB3;
+}
+
+.info-box .box-title span.title {
+	text-transform: uppercase;
+	font-size: 9pt;
+	font-weight: bold;
+	line-height: 30px;
+	padding: 0px !important;
+	width: 245px;
+	text-align: center;
+}
+
+.info-box a {
+	color: #265CB3;
+	font-weight: bold;
+	font-size: 9pt;
+	margin-left: 15px;
+}
+
+.info-box img{
+	width: 245px;
+	height: 184px;
+}
+
+.info-box span.info-text-hide{
+	position: absolute;
+	width: 235px;
+	margin: 0px 5px !important;
+	height: 184px;
+	padding: 0px !important;
+	z-index: 999;
+	top: 30px;
+	display: none;
+}
+
+span.info-text-hide *{
+	margin: 0px !important;
+	display: table-cell;
+	vertical-align: middle;
+	width: 235px;
+	height: 184px;
+	text-align: center;
+	font-size: 11pt !important;
+	font-weight: bold !important;
+}
+
+/**
+ * 	CONTACT
+ */
+
+.info-contact {
+	width: 448px;
+	min-height: 90px;
+	overflow: hidden;
+	border: solid 2px #C7B299;
+	background: transparent url('../_images/phonebox.png') center left no-repeat;
+	background-color: #FFFFFF;
+	float: right;
+	margin-right: 50px;
+	margin-bottom: 20px;
+}
+
+.info-contact span {
+	width: 290px;
+	font-size: 25pt;
+	color: #C69C6D;
+	text-align: center;
+	padding: 15px 45px 5px 15px;
+	float: right;
+}

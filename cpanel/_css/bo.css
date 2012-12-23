@@ -146,6 +146,20 @@ a.text-success:hover {
     text-decoration: none;
 }
 
+.navbar .closeSession {
+	display: block;
+    float: right;
+    padding: 10px 20px;
+    margin-left: -20px;
+    font-size: 16px;
+    text-shadow: 0 1px 0 #FFF;
+}
+
+.navbar .closeSession:hover {
+	text-decoration: none;
+    color: #777;
+}
+
 #nav {
     margin: 0px 10px 0px 0px;
     padding: 0px;
@@ -457,4 +471,12 @@ table {
 .dialog-footer > .btn {
     float: right;
     margin: 5px;
+}
+
+textarea.edit-text {
+	height: 65px;
+	width: 690px;
+	resize: none;
+	font-family: inherit;
+	font-size: inherit;
 }

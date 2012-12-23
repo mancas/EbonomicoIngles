@@ -29,7 +29,7 @@ function toggleActiveBanner($id) {
 
     setTimeout(function() {
         location.reload();
-    }, 4000);
+    }, 3000);
 
 }
 
@@ -108,4 +108,24 @@ function alertInfo() {
     $("a.info").bind('mouseenter mouseleave', function(event) {
         $(this).find('>span').toggleClass('hide');
     });
+}
+
+function countChars() {
+	$item = $('#charCounter');
+	$value = $('#item_texto').val();
+	$value = $value.length;
+	$maxChars = 130;
+	
+	if ($value < $maxChars) {
+		$item.html($maxChars - $value);
+		$item.removeClass('text-error');
+		$('input[type="submit"]').removeAttr('disabled');
+		$('input[type="submit"]').removeClass('btn-danger');
+	} else {
+		$item.html($maxChars - $value);
+		$item.addClass('text-error');
+		$('input[type="submit"]').attr('disabled', 'disabled');
+		$('input[type="submit"]').addClass('btn-danger');
+	}
+	
 }

@@ -1,3 +1,22 @@
+<?php
+include_once ('cpanel/_procedures/GestionDB.php');
+
+$gestionDB = new GestionDB();
+
+$hasBanners = $gestionDB -> hasBanners();
+
+if ($hasBanners == 0) {
+	$style = 'simpleStyle';
+	$columns = false;
+} else {
+	$style = 'bannerStyle';
+	$columns = true;
+	$banners = $gestionDB -> getBannersInicio();
+}
+
+$textos = $gestionDB -> getTextos();
+
+?>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
 "http://www.w3.org/TR/html4/loose.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -10,6 +29,8 @@
 		<link type="text/css" rel="stylesheet" href="_css/style.css" />
 		<link type='text/css' href='_css/fonts.css' rel='stylesheet' />
 		<link type='text/css' href='_css/slideshow.css' rel='stylesheet' />
+		
+		<link type='text/css' href='_css/<?php echo $style; ?>.css' rel='stylesheet' />
 
 		<script type="text/javascript" src="_js/util.js"></script>
 		<script type="text/javascript" src="_js/slideshow.js"></script>
@@ -37,19 +58,31 @@
 		?>
 
 		<div class="media-container">
-
+		<?php if ($columns) { ?>
 			<div id="banner-left">
                 <ul class="banner">
                     <li id="b1">
-                        <a title="Ebonomico" href="http://www.ebonomico.es" target="ebonomico"><img alt="ebonomico" src="_uploads/gif_ebo.gif" /></a>
+                    	<?php foreach ($banners['0'] as $banner) { 
+                    		$name = ucfirst($banner['name']);
+							$route =  $banner['path'];
+							$link = $banner['link'];
+                    	?>
+                        <a title="<?php echo $name; ?>" <?php if (!empty($link)) { ?>href="<?php echo $link; ?>" <?php } ?> target="<?php if (!empty($link)) { echo $name; } ?>"><img alt="<?php echo $name ?>" src="<?php echo $route ?>" /></a>
+                    	<?php } ?>
                     </li>
                     
-                    <li id="b2">
-                        <a title="Felices fiestas" href=""><img alt="Felices Fiestas" src="_uploads/gif_fiestas.gif" /></a>
+                    <li id="b3">
+                    	<?php foreach ($banners['2'] as $banner) { 
+                    		$name = ucfirst($banner['name']);
+							$route = $banner['path'];
+							$link = $banner['link'];
+                    	?>
+                        <a title="<?php echo $name; ?>" <?php if (!empty($link)) { ?>href="<?php echo $link; ?>" <?php } ?> target="<?php if (!empty($link)) { echo $name; } ?>"><img alt="<?php echo $name ?>" src="<?php echo $route ?>" /></a>
+                    	<?php } ?>
                     </li>
                 </ul>
 			</div>
-
+		<?php } ?>
 			<!-- COURSES --->
 			<div id="index-content">
 
@@ -60,7 +93,7 @@
 					</div>
 					<img id="_kids-photo" title="Inglés para Niños: Más Información" alt="Niños Estudiando Inglés" src="_images/kids.jpg" />
 
-					<span id="_kids-text" class="info-text-hide"><p>Tus clases de Inglés personalizadas, en casa o por grupos pequeños</p></span>
+					<span id="_kids-text" class="info-text-hide"><p><?php echo $textos[0]; ?></p></span>
 				</div>
 
 				<div class="info-box" onmouseover="showText('_teen');" onmouseout="hideText('_teen');" onclick="changeLocation('_web/ingles-jovenes-y-adultos.php');">
@@ -71,7 +104,7 @@
 
 					<img id="_teen-photo" alt="Clase de Inglés de Jóvenes y Adultos" title="Inglés para Jóvenes y Adultos: Más Información" src="_images/teenagers.jpg" />
 
-					<span id="_teen-text" class="info-text-hide"><p>Clases de apoyo, refuerzo o perfeccionamiento según tu necesidad</p></span>
+					<span id="_teen-text" class="info-text-hide"><p><?php echo $textos[1]; ?></p></span>
 
 				</div>
 
@@ -83,7 +116,7 @@
 
 					<img id="_business-photo" alt="Inglés y Empresa" title="Inglés para Empresas: Más Información" src="_images/business.jpg" />
 
-					<span id="_business-text" class="info-text-hide"><p>Inglés dirigido a trabajadores y empresarios</p></span>
+					<span id="_business-text" class="info-text-hide"><p><?php echo $textos[2]; ?></p></span>
 
 				</div>
 
@@ -95,7 +128,7 @@
 
 					<img id="_internet-photo" alt="Inglés en Internet" title="Inglés por Internet: Más Información" src="_images/business2.jpg" />
 
-					<span id="_internet-text" class="info-text-hide"><p>Clases a distancia con nuevas tecnologías</p></span>
+					<span id="_internet-text" class="info-text-hide"><p><?php echo $textos[3]; ?></p></span>
 
 				</div>
 
@@ -106,18 +139,32 @@
 				</div>
 			</div>
 
+		<?php if ($columns) { ?>
 			<div id="banner-right">
                 <ul class="banner">
-                    <li id="b3">
-                        <a title="Realiza nuestro test de nivel" href=""><img alt="Test" src="_uploads/gif_test.gif" /></a>
+                    <li id="b2">
+                       <?php foreach ($banners['1'] as $banner) { 
+                    		$name = ucfirst($banner['name']);
+							$route =  $banner['path'];
+							$link = $banner['link'];
+                    	?>
+                    	<a title="<?php echo $name; ?>" <?php if (!empty($link)) { ?>href="<?php echo $link; ?>" <?php } ?> target="<?php if (!empty($link)) { echo $name; } ?>"><img alt="<?php echo $name ?>" src="<?php echo $route ?>" /></a>
+                    	<?php } ?>
                     </li>
                     
                     <li id="b4">
-                        <a title="Publicidad" href=""><img alt="Publicidad" src="_uploads/gif_publi.gif" /></a>
+                        <?php foreach ($banners['3'] as $banner) { 
+                    		$name = ucfirst($banner['name']);
+							$route =  $banner['path'];
+							$link = $banner['link'];
+                    	?>
+                    	<a title="<?php echo $name; ?>" <?php if (!empty($link)) { ?>href="<?php echo $link; ?>" <?php } ?> target="<?php if (!empty($link)) { echo $name; } ?>"><img alt="<?php echo $name ?>" src="<?php echo $route ?>" /></a>
+                    	<?php } ?>
                     </li>
                 </ul>
 			</div>
-
+		<?php } ?>
+		
 		</div>
 
 		<?php

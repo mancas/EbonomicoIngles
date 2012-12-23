@@ -1,7 +1,7 @@
 <?php
 require_once ('../_procedures/UserDataInfo.php');
 
-session_start();
+include_once ('../_includes/bo-checkLogin.inc');
 
 $dataInfo = $_SESSION['UserInfo'];
 
@@ -32,7 +32,7 @@ if (!isset($data)) {
 <html xmlns="http://www.w3.org/1999/xhtml">
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-        <title>Panel de Control-Añadir nuevo Banner</title>
+        <title>Panel de Control</title>
 
         <?php
         include ($_SERVER["DOCUMENT_ROOT"] . "/aptana/ebonomicoingles/cpanel/_includes/bo-styles.inc");
@@ -56,7 +56,7 @@ if (!isset($data)) {
         ?>
 
         <div class="content">
-            <form method="post" enctype="multipart/form-data" action="../_procedures/upload.php" onsubmit="return checkUpload(new Array('_name', '_file', '_link'));">
+            <form method="post" enctype="multipart/form-data" action="../_procedures/upload.php" onsubmit="return checkUpload(new Array('_name', '_file'));">
                 <table class="table">
                     <tr>
                         <th colspan="3"> Rellene los campos para añadir un nuevo banner </th>
@@ -75,7 +75,7 @@ if (!isset($data)) {
                         <td>
                         <input id="item_link" type="text" value="<?php echo $data['_link']; ?>" name="_link" />
                         </td>
-                        <td id="e_link" class="text-error"><?php echo $fieldErrors['_link']; ?></td>
+                        <td id="e_link" class="text-error"></td>
                     </tr>
 
                     <tr>

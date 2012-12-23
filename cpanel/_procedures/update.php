@@ -47,4 +47,27 @@ if ($action == 'user') {
         header("Location:../usuarios/usuarios-edit.php?id=$id");
     }
 }
+
+if ($action == 'textoInicio') {
+
+	$texto = $_REQUEST['_texto'];
+    $result = $gestionDB -> $method($id, $texto);
+    
+    $dataInfo = UserDataInfo::getInstance();
+    $dataInfo->setIsHide(false);
+
+    if ($result) {
+        $dataInfo->setMessage("Se ha actualizado correctamente el texto.");
+        $dataInfo->setClasses(array('alert', 'alert-info', 'action-info', 'action'));
+        $dataInfo->setType('Info');
+        $_SESSION['UserInfo'] = $dataInfo;
+        header("Location:../textos/textos-view.php");
+    } else {
+        $dataInfo->setMessage("Se ha producido un error durante la actualización del texto. Si el problema persiste pongase en contacto con el administrador del sitio web.");
+        $dataInfo->setClasses(array('alert', 'alert-error', 'action-error', 'action'));
+        $dataInfo->setType('Aviso');
+        $_SESSION['UserInfo'] = $dataInfo;
+        header("Location:../textos/textos-edit.php?id=$id");
+    }
+}
 ?>

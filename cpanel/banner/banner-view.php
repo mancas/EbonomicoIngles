@@ -2,8 +2,6 @@
 include_once ('../_procedures/GestionDB.php');
 require_once ('../_procedures/UserDataInfo.php');
 
-session_start();
-
 include_once ('../_includes/bo-checkLogin.inc');
 
 $gestionBD = new GestionDB();

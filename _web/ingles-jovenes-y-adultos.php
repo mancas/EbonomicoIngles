@@ -21,7 +21,7 @@
 
 			<div class="container">
 
-				<h2>Cursos para <span class="blue">Jóvenes</span></h2>
+				<h2>Cursos para <i class="blue">Jóvenes</i></h2>
 
 				<span class="content-right">
 					<p>
@@ -30,16 +30,16 @@
 					</p>
 					<ul class="requirements">
 						<li>
-							<span class="blue">Reading (Lectura)</span>
+							<i class="blue">Reading (Lectura)</i>
 						</li>
 						<li>
-							<span class="blue">Writing (Escritura)</span>
+							<i class="blue">Writing (Escritura)</i>
 						</li>
 						<li>
-							<span class="blue">Listening (Comprensión)</span>
+							<i class="blue">Listening (Comprensión)</i>
 						</li>
 						<li>
-							<span class="blue">Speaking (Comunicación)</span>
+							<i class="blue">Speaking (Comunicación)</i>
 						</li>
 					</ul>
 					<p>
@@ -47,26 +47,26 @@
 						eso deben conocer bien la gramática para poder establecer una correcta comunicación en dicho idioma.
 					</p>
 					<p>
-						Los <span class="blue">objetivos</span> principales son que nuestros alumnos se sientan <span class="blue">cómodos con el inglés</span> que se sientan motivados
+						Los <i class="blue">objetivos</i> principales son que nuestros alumnos se sientan <i class="blue">cómodos con el inglés</i> que se sientan motivados
 						para seguir estudiándolo y que los resultados sean los mejores. Acabarán utilizando el inglés como una
-						<span class="blue">herramienta para favorecer su formación</span>
+						<i class="blue">herramienta para favorecer su formación</i>
 					</p>
 					<p>
-						Nos adaptamos a las necesidades de cada alumno y a través de <span class="blue">diferentes recursos como películas, canciones, lecturas,
-							manuales, test,</span> hacemos que el aprovechamiento de las clases sea completo y cubrimos lo que los adolescentes necesitan:
-						apoyo educativo, soltura y preparación de exámenes oficiales.<span class="blue">(B1 y B2)</span>
+						Nos adaptamos a las necesidades de cada alumno y a través de <i class="blue">diferentes recursos como películas, canciones, lecturas,
+							manuales, test,</i> hacemos que el aprovechamiento de las clases sea completo y cubrimos lo que los adolescentes necesitan:
+						apoyo educativo, soltura y preparación de exámenes oficiales.<i class="blue">(B1 y B2)</i>
 					</p>
 					<p>
-						Debido al problema del <span class="blue">mercado laboral</span> en España, muchos jóvenes se aventuran a buscar trabajo en el extranjero
+						Debido al problema del <i class="blue">mercado laboral</i> en España, muchos jóvenes se aventuran a buscar trabajo en el extranjero
 						pero algunos dudan debido a sus escasos conocimientos en Inglés.
 					</p>
 					<p>
-						Desde <span class="bblue">English Be Prepared</span>, queremos ayudarle a superar ese problema y también a elaborar <span class="blue">su CV en Inglés</span>
+						Desde <i class="bblue">English Be Prepared</i>, queremos ayudarle a superar ese problema y también a elaborar <i class="blue">su CV en Inglés</i>
 						para que así le resulte más fácil conseguir su objetivo.
 					</p>
 					<p>
 						Por eso si necesitas apoyo educativo, refuerzo, quieres prepararte algún examen o necesitas hablar inglés para 
-						desenvolverte bien en el extranjero, no lo pienses , en <span class="bblue">English Be Prepared</span>, 
+						desenvolverte bien en el extranjero, no lo pienses , en <i class="bblue">English Be Prepared</i>, 
 						encontrarás la respuesta a tus necesidades.
 					</p> </span>
 				<span class="content-left"> <img alt="Kids" src="../_images/teenagers.jpg" /> </span>

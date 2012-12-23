@@ -13,7 +13,7 @@ $tamano_archivo = $_FILES["_file"]["size"];
 $nombre_temp = $_FILES["_file"]["tmp_name"];
 $banner_name = $_REQUEST['_name'];
 
-$data = array('_name' => $name, '_link' => $link);
+$data = array('_name' => $name);
 
 /**
  * CONTROL ERRORES
@@ -88,9 +88,9 @@ if (!($dataInfo instanceof UserDataInfo) && empty($fieldsCheck)) {
         $url = $util -> sanitizeUrl($link);
         $gestionDB = new GestionDB();
 
-		$date = new DateTime('now');
+		$date = date('Y-m-d H:i:s');
 
-        $values = array('name' => $name, 'path' => $file_path, 'link' => $url, 'date' => $date->format('Y-m-d'));
+        $values = array('name' => $name, 'path' => $file_path, 'link' => $url, 'date' => $date);
 
         $operation = $gestionDB -> createBanner($values);
 

@@ -131,12 +131,15 @@ class Util {
 
     public function sanitizeUrl($url)
     {
-        if (strpos($url, 'http://') === false) {
-            $result = 'http://' . $url;
+        if (!empty($url)) {
+            if (strpos($url, 'http://') === false) {
+                $result = 'http://' . $url;
+            } else {
+                $result = $url;
+            }
         } else {
             $result = $url;
         }
-
         return $result;
 
     }

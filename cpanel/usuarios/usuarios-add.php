@@ -1,7 +1,7 @@
 <?php
 require_once ('../_procedures/UserDataInfo.php');
 
-session_start();
+include_once ('../_includes/bo-checkLogin.inc');
 
 $dataInfo = $_SESSION['UserInfo'];
 
@@ -16,7 +16,7 @@ if(!isset($dataInfo) || !$dataInfo instanceof UserDataInfo){
 <html xmlns="http://www.w3.org/1999/xhtml">
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-        <title>Panel de Control-Añadir nuevo Usuario</title>
+        <title>Panel de Control</title>
 
         <?php
         include ($_SERVER["DOCUMENT_ROOT"] . "/aptana/ebonomicoingles/cpanel/_includes/bo-styles.inc");

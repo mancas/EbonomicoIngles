@@ -12,7 +12,46 @@ class GestionDB {
             $SQL = "SELECT * FROM `englishbeprepared`.`banner`";
             $banners = $connection -> query($SQL);
         } catch(PDOException $e) {
-            $connection -> closeConnection();
+            $instance -> closeConnection();
+            return false;
+        }
+        $instance -> closeConnection();
+
+        return $banners;
+    }
+
+    public function hasBanners()
+    {
+        $instance = DataBaseConnection::getInstance();
+        $connection = $instance -> createConnection();
+        try {
+            $SQL1 = "SELECT * FROM `englishbeprepared`.`banner` WHERE `active` = 1";
+            $result = $connection -> query($SQL1);
+        } catch(PDOException $e) {
+            $instance -> closeConnection();
+            return false;
+        }
+        $instance -> closeConnection();
+
+        return $result -> rowCount();
+    }
+
+    public function getBannersInicio()
+    {
+        $instance = DataBaseConnection::getInstance();
+        $connection = $instance -> createConnection();
+        $banners = array();
+        try {
+            $SQL1 = "SELECT * FROM `englishbeprepared`.`banner` WHERE `posicion` = 1 ORDER BY `banner`.`date` ASC LIMIT 1";
+            $banners[] = $connection -> query($SQL1);
+            $SQL2 = "SELECT * FROM `englishbeprepared`.`banner` WHERE `posicion` = 2 ORDER BY `banner`.`date` ASC LIMIT 1";
+            $banners[] = $connection -> query($SQL2);
+            $SQL3 = "SELECT * FROM `englishbeprepared`.`banner` WHERE `posicion` = 3 ORDER BY `banner`.`date` ASC LIMIT 1";
+            $banners[] = $connection -> query($SQL3);
+            $SQL4 = "SELECT * FROM `englishbeprepared`.`banner` WHERE `posicion` = 4 ORDER BY `banner`.`date` ASC LIMIT 1";
+            $banners[] = $connection -> query($SQL4);
+        } catch(PDOException $e) {
+            $instance -> closeConnection();
             return false;
         }
         $instance -> closeConnection();
@@ -37,7 +76,7 @@ class GestionDB {
             $result['OK'] = $res;
 
         } catch(PDOException $e) {
-            $connection -> closeConnection();
+            $instance -> closeConnection();
             return false;
         }
         $instance -> closeConnection();
@@ -50,7 +89,7 @@ class GestionDB {
         $instance = DataBaseConnection::getInstance();
         $connection = $instance -> createConnection();
         try {
-            $SQL = "UPDATE `englishbeprepared`.`banner` SET `banner`.`active` = '$value', `banner`.`posicion` = 'NULL' WHERE `banner`.`id` = $id";
+            $SQL = "UPDATE `englishbeprepared`.`banner` SET `banner`.`active` = '$value', `banner`.`posicion` = 0 WHERE `banner`.`id` = $id";
             $result = $connection -> exec($SQL);
         } catch(PDOException $e) {
             $instance -> closeConnection();
@@ -76,17 +115,17 @@ class GestionDB {
 
         return $result;
     }
-	
-	public function createBanner($values)
-	{
-		$instance = DataBaseConnection::getInstance();
+
+    public function createBanner($values)
+    {
+        $instance = DataBaseConnection::getInstance();
         $connection = $instance -> createConnection();
-        
+
         $name = $values['name'];
         $link = $values['link'];
-		$path = $values['path'];
-		$date = $values['date'];
-		
+        $path = $values['path'];
+        $date = $values['date'];
+
         try {
             $SQL = "INSERT INTO `englishbeprepared`.`banner` (`name`, `path`, `link`, `date`) VALUES ('$name', '$path', '$link', '$date')";
             $result = $connection -> exec($SQL);
@@ -97,7 +136,7 @@ class GestionDB {
         $instance -> closeConnection();
 
         return $result;
-	}
+    }
 
     /**
      * USUARIOS
@@ -129,7 +168,7 @@ class GestionDB {
             $result = $connection -> exec($SQL);
 
         } catch(PDOException $e) {
-            $connection -> closeConnection();
+            $instance -> closeConnection();
             return false;
         }
         $instance -> closeConnection();
@@ -154,5 +193,70 @@ class GestionDB {
 
         return $result;
     }
+	
+	/**
+	 * TEXTOS INICIO
+	 */
+
+	 public function getTextosInicio()
+	 {
+	 	$instance = DataBaseConnection::getInstance();
+        $connection = $instance -> createConnection();
+        try {
+            $SQL = "SELECT * FROM `englishbeprepared`.`textosInicio`";
+            $textos = $connection -> query($SQL);
+        } catch(PDOException $e) {
+            $instance -> closeConnection();
+            return false;
+        }
+        $instance -> closeConnection();
+
+        return $textos;
+	 }
+	 
+	 public function getTextoInicio($id)
+	 {
+	 	$instance = DataBaseConnection::getInstance();
+        $connection = $instance -> createConnection();
+        try {
+            $SQL = "SELECT * FROM `englishbeprepared`.`textosInicio` WHERE `id` = $id";
+            $texto = $connection -> query($SQL);
+        } catch(PDOException $e) {
+            $instance -> closeConnection();
+            return false;
+        }
+        $instance -> closeConnection();
+
+        return $texto;
+	 }
+	 
+	 public function getTextos()
+	 {
+	 	$textos = $this->getTextosInicio();
+		$result = array();
+		foreach ($textos as $texto) {
+			$result[] = $texto['texto'];
+		}
+		
+		return $result;
+	 }
+	 
+	 public function updateTextoInicio($id, $texto)
+	 {
+	 	$instance = DataBaseConnection::getInstance();
+        $connection = $instance -> createConnection();
+
+        try {
+            $passwordCod = md5($plainPassword);
+            $SQL = "UPDATE `englishbeprepared`.`textosInicio` SET `textosInicio`.`texto` = '$texto' WHERE `textosInicio`.`id` = $id";
+            $result = $connection -> exec($SQL);
+        } catch(PDOException $e) {
+            $instance -> closeConnection();
+            return false;
+        }
+        $instance -> closeConnection();
+
+        return $result;
+	 }
 }
 ?>
