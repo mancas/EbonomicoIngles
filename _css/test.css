@@ -1,0 +1,39 @@
+i.sub {
+    width: 120px;
+    display: inline-block;
+    margin: 0 2px;
+    border-bottom: solid 1px #333333;
+}
+
+#test {
+    list-style-type: decimal;
+    list-style-position: outside;
+    padding: 0 20px;
+    position: relative;
+}
+
+#test li {
+    margin-bottom: 20px;
+    font-size: 10pt;
+    position: relative;
+    overflow: hidden;
+}
+
+#test li p {
+    margin: 10px 0px !important;
+}
+
+#test input {
+    float: left;
+    margin: 5px 0 10px 10px;
+}
+
+#test label {
+    font-size: inherit;
+    float: left;
+    margin: 0 15px 10px 5px;
+}
+
+#test span {
+    float: left;
+}

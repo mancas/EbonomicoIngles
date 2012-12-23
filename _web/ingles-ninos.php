@@ -20,7 +20,7 @@
 
 		<div class="media-container">
 			
-			<h2>Cursos para <span class="blue">Niños</span></h2>
+			<h2>Cursos para <i class="blue">Niños</i></h2>
 			
 			<span class="content-right">
 				
