@@ -6,7 +6,7 @@ i.sub {
 }
 
 #test {
-    list-style-type: decimal;
+    list-style-type: none;
     list-style-position: outside;
     padding: 0 20px;
     position: relative;
@@ -25,7 +25,7 @@ i.sub {
 
 #test input {
     float: left;
-    margin: 5px 0 10px 10px;
+    margin: 3px 0 10px 10px;
 }
 
 #test label {
@@ -36,4 +36,80 @@ i.sub {
 
 #test span {
     float: left;
+}
+
+.text-error {
+    color: #D40F12;
+}
+
+.text-success {
+    color: #468847;
+}
+
+div#test-results {
+    margin-bottom: 20px;
+    overflow: hidden;
+}
+
+#test-resumen, #test-puntuacion {
+    float: left;
+    width: 240px;
+    min-height: 50px;
+    overflow: hidden;
+}
+
+#test-resumen p:first-of-type {
+    margin-top: 0 !important; 
+}
+
+#test-puntuacion {
+    width: 318px;
+    padding: 10px;
+    border: solid 1px #2F5BB7;
+    background-color: #6893C8;
+    border-radius: 2px;
+    -moz-border-radius: 2px;
+    -webkit-border-radius: 2px;
+    color: #F2F2F2;
+    text-shadow: 0 1px 0 #444;
+}
+
+/**
+ * DIALOG
+ */
+
+.dialog {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 119;
+    background: transparent url('../_images/overlay.png') repeat;
+}
+
+.dialog > div {
+    width: 500px;
+    height: 150px;
+    position: fixed;
+    z-index: 120;
+    top: 50%;
+    left: 50%;
+    margin-left: -260px;
+    margin-top: -75px;
+    background-color: #FFF;
+    padding: 0 10px;
+    border-radius: 4px;
+    -moz-border-radius: 4px;
+    -webkit-border-radius: 4px;
+}
+
+.dialog > div img {
+    display: block;
+    width: 64px;
+    margin: auto;
+}
+
+.hide {
+    display: none;
 }

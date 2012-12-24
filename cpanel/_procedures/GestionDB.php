@@ -193,14 +193,14 @@ class GestionDB {
 
         return $result;
     }
-	
-	/**
-	 * TEXTOS INICIO
-	 */
 
-	 public function getTextosInicio()
-	 {
-	 	$instance = DataBaseConnection::getInstance();
+    /**
+     * TEXTOS INICIO
+     */
+
+    public function getTextosInicio()
+    {
+        $instance = DataBaseConnection::getInstance();
         $connection = $instance -> createConnection();
         try {
             $SQL = "SELECT * FROM `englishbeprepared`.`textosInicio`";
@@ -212,11 +212,11 @@ class GestionDB {
         $instance -> closeConnection();
 
         return $textos;
-	 }
-	 
-	 public function getTextoInicio($id)
-	 {
-	 	$instance = DataBaseConnection::getInstance();
+    }
+
+    public function getTextoInicio($id)
+    {
+        $instance = DataBaseConnection::getInstance();
         $connection = $instance -> createConnection();
         try {
             $SQL = "SELECT * FROM `englishbeprepared`.`textosInicio` WHERE `id` = $id";
@@ -228,22 +228,22 @@ class GestionDB {
         $instance -> closeConnection();
 
         return $texto;
-	 }
-	 
-	 public function getTextos()
-	 {
-	 	$textos = $this->getTextosInicio();
-		$result = array();
-		foreach ($textos as $texto) {
-			$result[] = $texto['texto'];
-		}
-		
-		return $result;
-	 }
-	 
-	 public function updateTextoInicio($id, $texto)
-	 {
-	 	$instance = DataBaseConnection::getInstance();
+    }
+
+    public function getTextos()
+    {
+        $textos = $this -> getTextosInicio();
+        $result = array();
+        foreach ($textos as $texto) {
+            $result[] = $texto['texto'];
+        }
+
+        return $result;
+    }
+
+    public function updateTextoInicio($id, $texto)
+    {
+        $instance = DataBaseConnection::getInstance();
         $connection = $instance -> createConnection();
 
         try {
@@ -257,6 +257,138 @@ class GestionDB {
         $instance -> closeConnection();
 
         return $result;
-	 }
+    }
+
+    /**
+     * ENGLISH TEST
+     */
+
+    public function getTest()
+    {
+        $instance = DataBaseConnection::getInstance();
+        $connection = $instance -> createConnection();
+
+        try {
+            $SQL = "SELECT * FROM `englishbeprepared`.`testNivel`";
+            $result = $connection -> query($SQL);
+        } catch(PDOException $e) {
+            $instance -> closeConnection();
+            return false;
+        }
+
+        return $result;
+    }
+
+    public function getTestAnswers()
+    {
+        $instance = DataBaseConnection::getInstance();
+        $connection = $instance -> createConnection();
+
+        try {
+            $SQL = "SELECT * FROM `englishbeprepared`.`testNivel`";
+            $result = $connection -> query($SQL);
+        } catch(PDOException $e) {
+            $instance -> closeConnection();
+            return false;
+        }
+
+        if ($result) {
+            $correctAnswers = array();
+
+            foreach ($result as $question) {
+                $correctAnswers[] = $question['answer'];
+            }
+        }
+
+        return $correctAnswers;
+    }
+
+    public function getFormattedTest()
+    {
+        $instance = DataBaseConnection::getInstance();
+        $connection = $instance -> createConnection();
+
+        try {
+            $SQL = "SELECT * FROM `englishbeprepared`.`testNivel`";
+            $result = $connection -> query($SQL);
+        } catch(PDOException $e) {
+            $instance -> closeConnection();
+            return false;
+        }
+        $instance -> closeConnection();
+
+        if ($result) {
+            $formattedQuestions = array();
+
+            foreach ($result as $question) {
+                $formattedQuestion = array();
+                $aux = str_replace('_', ' <i class="sub"></i> ', $question['question']);
+                $formattedQuestion[] = $aux;
+                $formattedQuestion[] = explode(';', $question['answerList']);
+
+                $formattedQuestions[] = $formattedQuestion;
+            }
+        }
+
+        return $formattedQuestions;
+    }
+
+    public function getRanking()
+    {
+        $instance = DataBaseConnection::getInstance();
+        $connection = $instance -> createConnection();
+
+        try {
+            $SQL = "SELECT * FROM `englishbeprepared`.`ranking`";
+            $result = $connection -> query($SQL);
+        } catch(PDOException $e) {
+            $instance -> closeConnection();
+            return false;
+        }
+        $instance -> closeConnection();
+
+        return $result;
+    }
+
+    public function getRankPosition($mark)
+    {
+        $instance = DataBaseConnection::getInstance();
+        $connection = $instance -> createConnection();
+
+        try {
+            $SQL = "SELECT * FROM `englishbeprepared`.`ranking` WHERE `ranking`.`mark` > $mark ORDER BY `ranking`.`mark`, `ranking`.`id` DESC";
+            $result = $connection -> query($SQL);
+        } catch(PDOException $e) {
+            $instance -> closeConnection();
+            return false;
+        }
+        $instance -> closeConnection();
+
+        if ($result -> rowCount() > 0) {
+            $rank = ($result -> rowCount()) + 1;
+        } else {
+            $rank = 1;
+        }
+
+        return $rank;
+    }
+
+    public function createRankingMark($mark, $corrects, $errors, $blanks)
+    {
+        $instance = DataBaseConnection::getInstance();
+        $connection = $instance -> createConnection();
+
+        try {
+            $SQL = "INSERT INTO `englishbeprepared`.`ranking` (`mark`, `correct`, `incorrect`, `blanks`) VALUES ($mark, $corrects, $errors, $blanks)";
+            $result = $connection -> exec($SQL);
+        } catch(PDOException $e) {
+            $instance -> closeConnection();
+            return false;
+        }
+        $instance -> closeConnection();
+
+        return $result;
+    }
+
 }
 ?>

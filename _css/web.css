@@ -30,6 +30,35 @@
 	border: solid 4px #FFFFFF;
 }
 
+.content-left a.brand {
+    padding: 6px 15px;
+    background-color: #FFFFE0;
+    border: solid 1px #C69C6D;
+    display: block;
+    margin: 10px 0px;
+    border-radius: 4px;
+    -moz-border-radius: 4px;
+    -webkit-border-radius: 4px;
+    box-shadow: 0 2px 2px 1px #A9A9A9;
+    line-height: 40px;
+    color: #2F5BB7;
+    overflow: hidden;
+}
+
+a.brand:hover {
+    color: #C69C6D;
+    text-decoration: none;
+}
+
+.content-left a.brand img {
+    width: 40px;
+    height: 40px;
+    margin: 0 10px 0 0 !important;
+    border: none !important;
+    display: inline-block;
+    float: left;
+}
+
 h2{
 	font-size: 16pt;
 	color: #504F4F;

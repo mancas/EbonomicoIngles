@@ -48,7 +48,8 @@
 					Por eso desde <i class="bblue">English Be Prepared</i> hacemos que sus hijos, desde  pequeños, <i class="blue">aprendan Inglés jugando</i>.
 				</p>
 				</span>
-			<span class="content-left"> <img alt="Kids" src="../_images/kids2.jpg" /> </span>
+			<span class="content-left"> <img alt="Kids" src="../_images/kids2.jpg" /> 
+			   <a title="Realiza nuestro test" href="test.php" class="brand"><img alt="Pencil" src="../_images/icon-pencil.png" /> Realiza nuestro test</a></span>
 
 		</div>
 
