@@ -1,0 +1,2 @@
+[26-Dec-2012 18:00:39 Europe/Berlin] PHP Warning:  session_destroy() [<a href='function.session-destroy'>function.session-destroy</a>]: Trying to destroy uninitialized session in /home/englishb/public_html/bo_cpanel/_procedures/closeSession.php on line 3
+[26-Dec-2012 18:01:38 Europe/Berlin] PHP Warning:  session_destroy() [<a href='function.session-destroy'>function.session-destroy</a>]: Trying to destroy uninitialized session in /home/englishb/public_html/bo_cpanel/_procedures/closeSession.php on line 3

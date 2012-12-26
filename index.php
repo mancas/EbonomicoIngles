@@ -1,5 +1,5 @@
 <?php
-include_once ('cpanel/_procedures/GestionDB.php');
+include_once ('bo_cpanel/_procedures/GestionDB.php');
 
 $gestionDB = new GestionDB();
 

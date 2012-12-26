@@ -37,6 +37,9 @@ if(!isset($warnings)){
 		?>
 		
 		<script type="text/javascript" src="../_js/form.js"></script>
+		
+		<meta name="keywords" content="ingles para todos,pide presupuesto sin compromiso,clases de ingles sevilla,profesor particular">
+        <meta name="description" content="Aprende Inglés de la mano de los mejores profesionales, de una forma rápida, sencilla y al alcance de tu mano.">
 
 	</head>
 

@@ -9,6 +9,9 @@
 		include ($_SERVER["DOCUMENT_ROOT"] . "/_includes/ebp-s-001.inc");
 		include ($_SERVER["DOCUMENT_ROOT"] . "/_includes/g-analytics.inc");
 		?>
+		
+		<meta name="keywords" content="ingles para los mas pequeños,aprende ingles riendo y jugando,academia de ingles sevilla,proferor particular de ingles sevilla,sevilla,ingles,english be prepared">
+        <meta name="description" content="Aprende Inglés de la mano de los mejores profesionales, de una forma rápida, sencilla y al alcance de tu mano.">
 
 	</head>
 

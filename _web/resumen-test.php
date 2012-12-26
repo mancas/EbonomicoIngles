@@ -1,6 +1,6 @@
 <?php
 require_once ('../_procedures/Test.php');
-include_once ('../cpanel/_procedures/GestionDB.php');
+include_once ('../bo_cpanel/_procedures/GestionDB.php');
 
 session_start();
 
@@ -27,8 +27,8 @@ $ranking = $gestionDB -> getRanking() -> rowCount();
         <title>English Be Prepared: Comprueba tu nivel de Inglés</title>
 
         <?php
-        include ($_SERVER["DOCUMENT_ROOT"] . "/aptana/ebonomicoingles/_includes/ebp-s-001.inc");
-        include ($_SERVER["DOCUMENT_ROOT"] . "/aptana/ebonomicoingles/_includes/g-analytics.inc");
+        include ($_SERVER["DOCUMENT_ROOT"] . "/_includes/ebp-s-001.inc");
+        include ($_SERVER["DOCUMENT_ROOT"] . "/_includes/g-analytics.inc");
         ?>
 
         <link type="text/css" rel="stylesheet" href="../_css/test.css" />
@@ -41,7 +41,7 @@ $ranking = $gestionDB -> getRanking() -> rowCount();
     <body>
 
         <?php
-        include ($_SERVER["DOCUMENT_ROOT"] . "/aptana/ebonomicoingles/_includes/ebp002.inc");
+        include ($_SERVER["DOCUMENT_ROOT"] . "/_includes/ebp002.inc");
         ?>
 
         <div class="media-container">
@@ -131,7 +131,7 @@ $ranking = $gestionDB -> getRanking() -> rowCount();
         </div>
 
         <?php
-        include ($_SERVER["DOCUMENT_ROOT"] . "/aptana/ebonomicoingles/_includes/ebp003.inc");
+        include ($_SERVER["DOCUMENT_ROOT"] . "/_includes/ebp003.inc");
         ?>
     </body>
 

@@ -1,5 +1,5 @@
 <?php
-include_once ('../cpanel/_procedures/GestionDB.php');
+include_once ('../bo_cpanel/_procedures/GestionDB.php');
 include_once 'Test.php';
 
 session_start();
@@ -11,7 +11,12 @@ $correctAnswers = $gestionDB -> getTestAnswers();
 $userAnswers = array();
 
 for ($i = 1; $i <= count($correctAnswers); $i++) {
-    $userAnswers[] = $_REQUEST['q' . $i];
+    $aux = $_REQUEST['q' . $i];
+    if (strpos($aux, '\\') === false) {
+        $userAnswers[] = $aux;
+    } else {
+        $userAnswers[] = str_replace('\\', '', $aux);
+    }
 }
 
 $test = Test::getInstance();

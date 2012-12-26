@@ -1,6 +1,6 @@
 <?php
 
-include_once ('../cpanel/_procedures/GestionDB.php');
+include_once ('../bo_cpanel/_procedures/GestionDB.php');
 
 $gestionDB = new GestionDB();
 
@@ -15,8 +15,8 @@ $questions = $gestionDB -> getFormattedTest();
         <title>English Be Prepared: Comprueba tu nivel de Inglés</title>
 
         <?php
-        include ($_SERVER["DOCUMENT_ROOT"] . "/aptana/ebonomicoingles/_includes/ebp-s-001.inc");
-        include ($_SERVER["DOCUMENT_ROOT"] . "/aptana/ebonomicoingles/_includes/g-analytics.inc");
+        include ($_SERVER["DOCUMENT_ROOT"] . "/_includes/ebp-s-001.inc");
+        include ($_SERVER["DOCUMENT_ROOT"] . "/_includes/g-analytics.inc");
         ?>
 
         <link type="text/css" rel="stylesheet" href="../_css/test.css" />
@@ -29,13 +29,16 @@ $questions = $gestionDB -> getFormattedTest();
                 });
             });
         </script>
+        
+        <meta name="keywords" content="mide tu nivel de ingles,cursos de ingles a medida,profesores de ingles particulares sevilla,sevilla,ingles,academia de ingles,english be prepared test,test de ingles">
+        <meta name="description" content="Aprende Inglés de la mano de los mejores profesionales, de una forma rápida, sencilla y al alcance de tu mano.">
 
     </head>
 
     <body>
 
         <?php
-        include ($_SERVER["DOCUMENT_ROOT"] . "/aptana/ebonomicoingles/_includes/ebp002.inc");
+        include ($_SERVER["DOCUMENT_ROOT"] . "/_includes/ebp002.inc");
         ?>
 
         <div class="media-container">
@@ -93,7 +96,7 @@ $questions = $gestionDB -> getFormattedTest();
         </div>
 
         <?php
-        include ($_SERVER["DOCUMENT_ROOT"] . "/aptana/ebonomicoingles/_includes/ebp003.inc");
+        include ($_SERVER["DOCUMENT_ROOT"] . "/_includes/ebp003.inc");
         ?>
     </body>
 
