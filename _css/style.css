@@ -5,6 +5,10 @@ body {
 	background-color: #DDDDDD;
 }
 
+img {
+    border: none;
+}
+
 * {
 	margin: 0px;
 	padding: 0px;

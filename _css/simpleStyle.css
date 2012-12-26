@@ -79,14 +79,24 @@ span.info-text-hide *{
  * 	CONTACT
  */
 
+#social-contact {
+    width: 920px;
+    min-height: 50px;
+    overflow: hidden;
+    display: block;
+    clear: both;
+    margin-bottom: 20px;
+    padding: 0 20px;
+}
+
 .info-contact {
-	width: 448px;
+	width: 444px;
 	min-height: 90px;
 	overflow: hidden;
 	border: solid 2px #C7B299;
 	background: transparent url('../_images/phonebox.png') center left no-repeat;
 	background-color: #FFFFFF;
-	float: right;
+	float: left;
 	margin-right: 20px;
 	margin-bottom: 20px;
 }
@@ -98,4 +108,31 @@ span.info-text-hide *{
 	text-align: center;
 	padding: 15px 45px 5px 15px;
 	float: right;
+}
+
+a.fb {
+    padding: 10px 0px;
+    background-color: #FFFFFF;
+    border: solid 2px #3B5998;
+    display: block;
+    line-height: 80px;
+    color: #3B5998;
+    overflow: hidden;
+    width: 444px;
+    font-size: 16pt;
+}
+
+.fb img {
+    width: 80px;
+    height: 80px;
+    float: left;
+    margin: 0 15px;
+    display: inline-block;
+    border: none !important;
+}
+
+.fb-style {
+    color: #3b5998;
+    font-size: 16pt;
+    float: right;
 }

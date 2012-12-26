@@ -42,13 +42,13 @@ class GestionDB {
         $connection = $instance -> createConnection();
         $banners = array();
         try {
-            $SQL1 = "SELECT * FROM `englishbeprepared`.`banner` WHERE `posicion` = 1 ORDER BY `banner`.`date` ASC LIMIT 1";
+            $SQL1 = "SELECT * FROM `englishbeprepared`.`banner` WHERE `posicion` = 1 ORDER BY `banner`.`date`, `banner`.`id` ASC LIMIT 1";
             $banners[] = $connection -> query($SQL1);
-            $SQL2 = "SELECT * FROM `englishbeprepared`.`banner` WHERE `posicion` = 2 ORDER BY `banner`.`date` ASC LIMIT 1";
+            $SQL2 = "SELECT * FROM `englishbeprepared`.`banner` WHERE `posicion` = 2 ORDER BY `banner`.`date`, `banner`.`id` ASC LIMIT 1";
             $banners[] = $connection -> query($SQL2);
-            $SQL3 = "SELECT * FROM `englishbeprepared`.`banner` WHERE `posicion` = 3 ORDER BY `banner`.`date` ASC LIMIT 1";
+            $SQL3 = "SELECT * FROM `englishbeprepared`.`banner` WHERE `posicion` = 3 ORDER BY `banner`.`date`, `banner`.`id` ASC LIMIT 1";
             $banners[] = $connection -> query($SQL3);
-            $SQL4 = "SELECT * FROM `englishbeprepared`.`banner` WHERE `posicion` = 4 ORDER BY `banner`.`date` ASC LIMIT 1";
+            $SQL4 = "SELECT * FROM `englishbeprepared`.`banner` WHERE `posicion` = 4 ORDER BY `banner`.`date`, `banner`.`id` ASC LIMIT 1";
             $banners[] = $connection -> query($SQL4);
         } catch(PDOException $e) {
             $instance -> closeConnection();

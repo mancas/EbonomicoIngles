@@ -13,9 +13,9 @@ class DataBaseConnection {
     {
         $this -> connection = null;
         $this -> hostname = "localhost";
-        $this -> username = "dev";
+        $this -> username = "englishb_prod";
         $this -> password = "dxs.24";
-        $this -> dbName = "englishbeprepared";
+        $this -> dbName = "englishb_prepared";
     }
 
     public static function getInstance()

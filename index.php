@@ -61,25 +61,25 @@ $textos = $gestionDB -> getTextos();
 		<?php if ($columns) { ?>
 			<div id="banner-left">
                 <ul class="banner">
-                    <li id="b1">
-                    	<?php foreach ($banners['0'] as $banner) { 
+                   	<?php foreach ($banners['0'] as $banner) { 
                     		$name = ucfirst($banner['name']);
 							$route =  $banner['path'];
 							$link = $banner['link'];
                     	?>
+                    <li id="b1">
                         <a title="<?php echo $name; ?>" <?php if (!empty($link)) { ?>href="<?php echo $link; ?>" <?php } ?> target="<?php if (!empty($link)) { echo $name; } ?>"><img alt="<?php echo $name ?>" src="<?php echo $route ?>" /></a>
-                    	<?php } ?>
                     </li>
+                    <?php } ?>
                     
-                    <li id="b3">
-                    	<?php foreach ($banners['2'] as $banner) { 
+                    <?php foreach ($banners['2'] as $banner) { 
                     		$name = ucfirst($banner['name']);
 							$route = $banner['path'];
 							$link = $banner['link'];
                     	?>
+                    <li id="b3">
                         <a title="<?php echo $name; ?>" <?php if (!empty($link)) { ?>href="<?php echo $link; ?>" <?php } ?> target="<?php if (!empty($link)) { echo $name; } ?>"><img alt="<?php echo $name ?>" src="<?php echo $route ?>" /></a>
-                    	<?php } ?>
                     </li>
+                    <?php } ?>
                 </ul>
 			</div>
 		<?php } ?>
@@ -133,34 +133,37 @@ $textos = $gestionDB -> getTextos();
 				</div>
 
 				<!-- Contact phone number -->
-
-				<div class="info-contact">
-					<span> Información en el <b>666 647 852</b> </span>
+                <div id="social-contact">
+    				<div class="info-contact">
+    					<span> Información en el <b>666 647 852</b> </span>
+    				</div>
+    				
+    				<a class="fb" title="English Be Prepared en Facebook" href="http://www.facebook.com/englishbe.prepared" target="fb"><img alt="Facebook" src="_images/boton_facebook.gif" /> Síguenos en facebook</a>
 				</div>
 			</div>
 
 		<?php if ($columns) { ?>
 			<div id="banner-right">
                 <ul class="banner">
-                    <li id="b2">
-                       <?php foreach ($banners['1'] as $banner) { 
+                   <?php foreach ($banners['1'] as $banner) { 
                     		$name = ucfirst($banner['name']);
 							$route =  $banner['path'];
 							$link = $banner['link'];
-                    	?>
+                   	?>
+                   	<li id="b2">
                     	<a title="<?php echo $name; ?>" <?php if (!empty($link)) { ?>href="<?php echo $link; ?>" <?php } ?> target="<?php if (!empty($link)) { echo $name; } ?>"><img alt="<?php echo $name ?>" src="<?php echo $route ?>" /></a>
-                    	<?php } ?>
                     </li>
+                    <?php } ?>
                     
-                    <li id="b4">
-                        <?php foreach ($banners['3'] as $banner) { 
+                    <?php foreach ($banners['3'] as $banner) { 
                     		$name = ucfirst($banner['name']);
 							$route =  $banner['path'];
 							$link = $banner['link'];
-                    	?>
+                    ?>
+                    <li id="b4">
                     	<a title="<?php echo $name; ?>" <?php if (!empty($link)) { ?>href="<?php echo $link; ?>" <?php } ?> target="<?php if (!empty($link)) { echo $name; } ?>"><img alt="<?php echo $name ?>" src="<?php echo $route ?>" /></a>
-                    	<?php } ?>
                     </li>
+                   	<?php } ?>
                 </ul>
 			</div>
 		<?php } ?>
